@@ -29,12 +29,12 @@ vector<int> setVector(vector<int> a, int n)
     return a;
 }
 
-void revVector(vector<int> a, int i)
+void revVector(vector<int> &a, int i, int n)
 {
     if (i >= 0)
     {
-        cout << a[i] << " ";
-        revVector(a, i - 1);
+        swap(a[i], a[n - i]);
+        revVector(a, i - 1, n);
     }
 }
 
@@ -50,7 +50,7 @@ int main()
     cout << "List of elements:" << endl;
     printVect(elems);
     cout << endl;
-    int n = elems.size();
     cout << "Reversed elements:" << endl;
-    revVector(elems, n - 1);
+    revVector(elems, (input - 1) / 2, input - 1);
+    printVect(elems);
 }
